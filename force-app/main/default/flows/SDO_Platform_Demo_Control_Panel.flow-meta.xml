@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>54.0</apiVersion>
+    <choices>
+        <name>Create_a_Service_Outage_Incident_and_Related_Cases</name>
+        <choiceText>Create a Service Outage Incident and Related Cases</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Create a Service Outage Incident and Related Cases</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Remove_all_Incidents_and_related_Problems_and_Cases</name>
+        <choiceText>Remove all Incidents and related Problems and Cases</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Remove all Incidents and related Problems and Cases</stringValue>
+        </value>
+    </choices>
+    <decisions>
+        <name>Check_Flow_Selection</name>
+        <label>Check Flow Selection</label>
+        <locationX>314</locationX>
+        <locationY>278</locationY>
+        <defaultConnector>
+            <targetReference>Finished_Screen</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Generate_Incident_Outcome</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Select_Demo_Flow</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>Create_a_Service_Outage_Incident_and_Related_Cases</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Generate_Service_Outage_Incident</targetReference>
+            </connector>
+            <label>Generate Incident</label>
+        </rules>
+        <rules>
+            <name>Delete_Incidents_Outcome</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Select_Demo_Flow</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>Remove_all_Incidents_and_related_Problems_and_Cases</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Delete_All_Incidents</targetReference>
+            </connector>
+            <label>Delete Incidents</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Create_Endless_Loop</name>
+        <label>Create Endless Loop</label>
+        <locationX>314</locationX>
+        <locationY>734</locationY>
+        <defaultConnector>
+            <targetReference>Hidden_Screen</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Start_Again</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>finished</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <isGoTo>true</isGoTo>
+                <targetReference>Platform_Demos_Screen</targetReference>
+            </connector>
+            <label>Start Again</label>
+        </rules>
+    </decisions>
+    <description>Interactive Control Panel for Platform-related Demos. This flow is used for initializing and resetting Platform Demos and its embedded inside the Platform Demos App Page.</description>
+    <interviewLabel>Platform Demos Flow {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Platform Demos Control Panel</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>Flow</processType>
+    <screens>
+        <name>Finished_Screen</name>
+        <label>Finished Screen</label>
+        <locationX>314</locationX>
+        <locationY>614</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <connector>
+            <targetReference>Create_Endless_Loop</targetReference>
+        </connector>
+        <fields>
+            <name>Finished_Text</name>
+            <fieldText>&lt;p&gt;&lt;b&gt;Flow Executed!&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Click Next to return to the Platform Demos Flow selection screen.&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>Hidden_Screen</name>
+        <label>Hidden Screen</label>
+        <locationX>446</locationX>
+        <locationY>854</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <fields>
+            <name>Hidden_Text</name>
+            <fieldText>&lt;p&gt;You should never see this, but it makes the Finish button become Next on the previous screen. &lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>Platform_Demos_Screen</name>
+        <label>Salesforce Platform Demos</label>
+        <locationX>314</locationX>
+        <locationY>158</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <connector>
+            <targetReference>Check_Flow_Selection</targetReference>
+        </connector>
+        <fields>
+            <name>Select_Demo_Flow</name>
+            <choiceReferences>Create_a_Service_Outage_Incident_and_Related_Cases</choiceReferences>
+            <choiceReferences>Remove_all_Incidents_and_related_Problems_and_Cases</choiceReferences>
+            <dataType>String</dataType>
+            <fieldText>Select a demo flow to execute</fieldText>
+            <fieldType>RadioButtons</fieldType>
+            <isRequired>true</isRequired>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <start>
+        <locationX>188</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Platform_Demos_Screen</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <subflows>
+        <name>Delete_All_Incidents</name>
+        <label>Delete All Incidents and related Cases and Problems</label>
+        <locationX>314</locationX>
+        <locationY>398</locationY>
+        <connector>
+            <targetReference>Finished_Screen</targetReference>
+        </connector>
+        <flowName>SDO_Platform_Incident_Delete_All</flowName>
+    </subflows>
+    <subflows>
+        <name>Generate_Service_Outage_Incident</name>
+        <label>Generate Service Outage Incident and Related Cases</label>
+        <locationX>50</locationX>
+        <locationY>398</locationY>
+        <connector>
+            <targetReference>Finished_Screen</targetReference>
+        </connector>
+        <flowName>SDO_Platform_Incident_Generator</flowName>
+    </subflows>
+    <variables>
+        <name>finished</name>
+        <dataType>Boolean</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <booleanValue>false</booleanValue>
+        </value>
+    </variables>
+</Flow>

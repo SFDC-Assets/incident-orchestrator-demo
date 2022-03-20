@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>54.0</apiVersion>
+    <description>Accepts an alias and retrieves the User record for that alias. This is used by the Incident Management Orchestration to retrieve specific accounts. Because this demo can be cloned we cannot rely on User ID&apos;s which will vary per org. By contrast, aliases will be consistent across demo orgs and we can use those aliases to retrieve the User ID&apos;s for each unique demo org.</description>
+    <interviewLabel>Get User by Alias {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>User: Get by Alias</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Get_User_by_Alias</name>
+        <label>Get User by Alias</label>
+        <locationX>176</locationX>
+        <locationY>158</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Alias</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>alias</elementReference>
+            </value>
+        </filters>
+        <object>User</object>
+        <outputReference>user</outputReference>
+        <queriedFields>Id</queriedFields>
+        <queriedFields>Username</queriedFields>
+    </recordLookups>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_User_by_Alias</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <variables>
+        <name>alias</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>user</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>true</isOutput>
+        <objectType>User</objectType>
+    </variables>
+</Flow>

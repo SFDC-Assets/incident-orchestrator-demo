@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Get_Related_Cases</name>
+        <label>Get Related Cases</label>
+        <locationX>396</locationX>
+        <locationY>398</locationY>
+        <actionName>SDO_Platform_Get_Incident_Related_Cases</actionName>
+        <actionType>apex</actionType>
+        <connector>
+            <targetReference>Check_Cases</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>incidentId</name>
+            <value>
+                <elementReference>Incident_Loop.Id</elementReference>
+            </value>
+        </inputParameters>
+        <outputParameters>
+            <assignToReference>cases</assignToReference>
+            <name>cases</name>
+        </outputParameters>
+    </actionCalls>
+    <actionCalls>
+        <name>Get_Related_Problems</name>
+        <label>Get Related Problems</label>
+        <locationX>396</locationX>
+        <locationY>854</locationY>
+        <actionName>SDO_Platform_Get_Incident_Problems</actionName>
+        <actionType>apex</actionType>
+        <connector>
+            <targetReference>Check_Related_Problem_Results</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>incidentId</name>
+            <value>
+                <elementReference>Incident_Loop.Id</elementReference>
+            </value>
+        </inputParameters>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </actionCalls>
+    <apiVersion>54.0</apiVersion>
+    <decisions>
+        <name>Check_Cases</name>
+        <label>Check Results</label>
+        <locationX>396</locationX>
+        <locationY>518</locationY>
+        <defaultConnector>
+            <targetReference>Get_Related_Problems</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Check_Cases_Results</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>cases</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Delete_Related_Cases</targetReference>
+            </connector>
+            <label>Has Results</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Check_Related_Problem_Results</name>
+        <label>Check Results</label>
+        <locationX>396</locationX>
+        <locationY>974</locationY>
+        <defaultConnector>
+            <targetReference>Incident_Loop</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Related_Problems_Has_Results</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Related_Problems.problems</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Delete_Related_Problems</targetReference>
+            </connector>
+            <label>Has Results</label>
+        </rules>
+    </decisions>
+    <description>Deletes all Incident records and the associated Cases. This Flow is used by the Platform Demos Control Panel to reset the Incident Management Orchestrator demo.</description>
+    <interviewLabel>Delete all Incidents {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Incident: Delete All</label>
+    <loops>
+        <name>Incident_Loop</name>
+        <label>Incident Loop</label>
+        <locationX>176</locationX>
+        <locationY>278</locationY>
+        <collectionReference>Get_Incidents</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>Get_Related_Cases</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>Delete_Incidents</targetReference>
+        </noMoreValuesConnector>
+    </loops>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordDeletes>
+        <name>Delete_Incidents</name>
+        <label>Delete Incidents</label>
+        <locationX>176</locationX>
+        <locationY>1406</locationY>
+        <inputReference>Get_Incidents</inputReference>
+    </recordDeletes>
+    <recordDeletes>
+        <name>Delete_Related_Cases</name>
+        <label>Delete Related Cases</label>
+        <locationX>264</locationX>
+        <locationY>638</locationY>
+        <connector>
+            <targetReference>Get_Related_Problems</targetReference>
+        </connector>
+        <inputReference>cases</inputReference>
+    </recordDeletes>
+    <recordDeletes>
+        <name>Delete_Related_Problems</name>
+        <label>Delete Related Problems</label>
+        <locationX>264</locationX>
+        <locationY>1094</locationY>
+        <connector>
+            <targetReference>Incident_Loop</targetReference>
+        </connector>
+        <inputReference>Get_Related_Problems.problems</inputReference>
+    </recordDeletes>
+    <recordLookups>
+        <name>Get_Incidents</name>
+        <label>Get Incidents</label>
+        <locationX>176</locationX>
+        <locationY>158</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Incident_Loop</targetReference>
+        </connector>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>Incident</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_Incidents</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <variables>
+        <name>cases</name>
+        <dataType>SObject</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Case</objectType>
+    </variables>
+</Flow>

@@ -1,0 +1,13 @@
+{
+  "orgName": "Orchestrator Incident Management Demo",
+  "edition": "Enterprise",
+  "features": ["ServiceCloud","EnableSetPasswordInApi","ServiceUser"],
+  "settings": {
+    "lightningExperienceSettings": {
+      "enableS1DesktopEnabled": true
+    },
+    "securitySettings": {
+      "enableAdminLoginAsAnyUser":true
+    }    
+  }
+}
