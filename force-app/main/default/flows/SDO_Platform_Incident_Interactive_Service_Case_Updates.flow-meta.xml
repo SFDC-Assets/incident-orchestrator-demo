@@ -4,7 +4,7 @@
         <name>Get_Incident_Cases</name>
         <label>Get Incident Cases</label>
         <locationX>50</locationX>
-        <locationY>638</locationY>
+        <locationY>518</locationY>
         <actionName>SDO_Platform_Get_Incident_Related_Cases</actionName>
         <actionType>apex</actionType>
         <connector>
@@ -23,7 +23,7 @@
         <name>Post_to_Chatter</name>
         <label>Post to Chatter</label>
         <locationX>138</locationX>
-        <locationY>1238</locationY>
+        <locationY>1118</locationY>
         <actionName>chatterPost</actionName>
         <actionType>chatterPost</actionType>
         <connector>
@@ -49,7 +49,7 @@
         <name>Add_to_Cases_collection</name>
         <label>Add to Cases collection</label>
         <locationX>138</locationX>
-        <locationY>1118</locationY>
+        <locationY>998</locationY>
         <assignmentItems>
             <assignToReference>cases</assignToReference>
             <operator>Add</operator>
@@ -65,7 +65,7 @@
         <name>Set_First_Name</name>
         <label>Set First Name</label>
         <locationX>138</locationX>
-        <locationY>878</locationY>
+        <locationY>758</locationY>
         <assignmentItems>
             <assignToReference>firstName</assignToReference>
             <operator>Assign</operator>
@@ -88,7 +88,7 @@
         <name>Update_Case_Status</name>
         <label>Update Case Status</label>
         <locationX>138</locationX>
-        <locationY>998</locationY>
+        <locationY>878</locationY>
         <assignmentItems>
             <assignToReference>case.Id</assignToReference>
             <operator>Assign</operator>
@@ -111,7 +111,7 @@
         <name>Check_Status1_0</name>
         <label>Check Status</label>
         <locationX>182</locationX>
-        <locationY>518</locationY>
+        <locationY>398</locationY>
         <defaultConnector>
             <targetReference>Error_Screen</targetReference>
         </defaultConnector>
@@ -139,7 +139,7 @@
         <name>Cases_Loop</name>
         <label>Cases Loop</label>
         <locationX>50</locationX>
-        <locationY>758</locationY>
+        <locationY>638</locationY>
         <collectionReference>Get_Incident_Cases.cases</collectionReference>
         <iterationOrder>Asc</iterationOrder>
         <nextValueConnector>
@@ -172,7 +172,7 @@
         <name>Get_Incident</name>
         <label>Get Incident</label>
         <locationX>182</locationX>
-        <locationY>398</locationY>
+        <locationY>278</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Check_Status1_0</targetReference>
@@ -195,17 +195,14 @@
         <name>Update_Cases_0</name>
         <label>Update Cases</label>
         <locationX>50</locationX>
-        <locationY>1454</locationY>
-        <connector>
-            <targetReference>Success_Screen</targetReference>
-        </connector>
+        <locationY>1334</locationY>
         <inputReference>cases</inputReference>
     </recordUpdates>
     <screens>
         <name>Error_Screen</name>
         <label>Error Screen</label>
         <locationX>314</locationX>
-        <locationY>638</locationY>
+        <locationY>518</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -218,45 +215,10 @@
         <showHeader>true</showHeader>
     </screens>
     <screens>
-        <name>Information_Screen</name>
-        <label>Information Screen</label>
-        <locationX>182</locationX>
-        <locationY>158</locationY>
-        <allowBack>false</allowBack>
-        <allowFinish>true</allowFinish>
-        <allowPause>false</allowPause>
-        <connector>
-            <targetReference>Update_Cases_Screen</targetReference>
-        </connector>
-        <fields>
-            <name>Information_Text</name>
-            <fieldText>&lt;p&gt;You are the assigned &lt;b&gt;support lead&lt;/b&gt; for an active incident.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;ACTION ITEMS:&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;ol&gt;&lt;li&gt;Study the incident details and follow updates.&lt;/li&gt;&lt;li&gt;Click &lt;b&gt;Next&lt;/b&gt; to communicate Case updates to all impacted customers.&lt;/li&gt;&lt;/ol&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;</fieldText>
-            <fieldType>DisplayText</fieldType>
-        </fields>
-        <showFooter>true</showFooter>
-        <showHeader>true</showHeader>
-    </screens>
-    <screens>
-        <name>Success_Screen</name>
-        <label>Success Screen</label>
-        <locationX>50</locationX>
-        <locationY>1574</locationY>
-        <allowBack>false</allowBack>
-        <allowFinish>true</allowFinish>
-        <allowPause>false</allowPause>
-        <fields>
-            <name>Success_Text</name>
-            <fieldText>&lt;p&gt;&lt;b&gt;Update sent!&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Your update was successfully sent to all impacted customers.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Next Steps:&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Continue to monitor the incident for updates!&lt;/li&gt;&lt;/ul&gt;</fieldText>
-            <fieldType>DisplayText</fieldType>
-        </fields>
-        <showFooter>true</showFooter>
-        <showHeader>true</showHeader>
-    </screens>
-    <screens>
         <name>Update_Cases_Screen</name>
         <label>Update Cases Screen</label>
         <locationX>182</locationX>
-        <locationY>278</locationY>
+        <locationY>158</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -264,14 +226,10 @@
             <targetReference>Get_Incident</targetReference>
         </connector>
         <fields>
-            <name>Instructions_Text</name>
-            <fieldText>&lt;p&gt;Type the message you wish to send to all customers with cases related to this incident.&lt;/p&gt;</fieldText>
-            <fieldType>DisplayText</fieldType>
-        </fields>
-        <fields>
             <name>message</name>
-            <fieldText>Send this message to ALL impacted customers:</fieldText>
+            <fieldText>Send updates to impacted customers.</fieldText>
             <fieldType>LargeTextArea</fieldType>
+            <helpText>&lt;p&gt;Message to send impacted customers.&lt;/p&gt;</helpText>
             <isRequired>true</isRequired>
         </fields>
         <showFooter>true</showFooter>
@@ -281,7 +239,7 @@
         <locationX>56</locationX>
         <locationY>0</locationY>
         <connector>
-            <targetReference>Information_Screen</targetReference>
+            <targetReference>Update_Cases_Screen</targetReference>
         </connector>
     </start>
     <status>Active</status>

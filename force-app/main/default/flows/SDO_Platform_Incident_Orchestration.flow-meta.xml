@@ -452,7 +452,7 @@
             <actionType>stepInteractive</actionType>
             <assignees>
                 <assignee>
-                    <elementReference>Stage_1_Get_Escalation_Manager.Outputs.user.Username</elementReference>
+                    <elementReference>$Record.Owner:User.Username</elementReference>
                 </assignee>
                 <assigneeType>User</assigneeType>
             </assignees>
@@ -483,20 +483,6 @@
                 <assigneeType>User</assigneeType>
             </assignees>
             <entryConditionLogic>and</entryConditionLogic>
-            <exitActionInputParameters>
-                <name>incidentId</name>
-                <value>
-                    <elementReference>$Record.Id</elementReference>
-                </value>
-            </exitActionInputParameters>
-            <exitActionInputParameters>
-                <name>requiredStatus</name>
-                <value>
-                    <stringValue>In Progress</stringValue>
-                </value>
-            </exitActionInputParameters>
-            <exitActionName>SDO_Platform_Incident_Status_Evaluate</exitActionName>
-            <exitActionType>evaluationFlow</exitActionType>
             <inputParameters>
                 <name>ActionInput__RecordId</name>
                 <value>
@@ -523,20 +509,6 @@
                 <assigneeType>User</assigneeType>
             </assignees>
             <entryConditionLogic>and</entryConditionLogic>
-            <exitActionInputParameters>
-                <name>incidentId</name>
-                <value>
-                    <elementReference>$Record.Id</elementReference>
-                </value>
-            </exitActionInputParameters>
-            <exitActionInputParameters>
-                <name>requiredStatus</name>
-                <value>
-                    <stringValue>Resolved</stringValue>
-                </value>
-            </exitActionInputParameters>
-            <exitActionName>SDO_Platform_Incident_Status_Evaluate</exitActionName>
-            <exitActionType>evaluationFlow</exitActionType>
             <inputParameters>
                 <name>ActionInput__RecordId</name>
                 <value>
@@ -603,7 +575,7 @@
             <actionType>stepInteractive</actionType>
             <assignees>
                 <assignee>
-                    <elementReference>Stage_1_Get_Escalation_Manager.Outputs.user.Username</elementReference>
+                    <elementReference>$Record.Owner:User.Username</elementReference>
                 </assignee>
                 <assigneeType>User</assigneeType>
             </assignees>

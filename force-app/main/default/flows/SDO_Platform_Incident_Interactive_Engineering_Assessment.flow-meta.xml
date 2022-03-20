@@ -5,7 +5,7 @@
         <name>Set_Problem_Values</name>
         <label>Set Problem Values</label>
         <locationX>176</locationX>
-        <locationY>398</locationY>
+        <locationY>278</locationY>
         <assignmentItems>
             <assignToReference>problem.Subject</assignToReference>
             <operator>Assign</operator>
@@ -122,7 +122,7 @@
         <name>Create_Problem</name>
         <label>Create Problem</label>
         <locationX>176</locationX>
-        <locationY>518</locationY>
+        <locationY>398</locationY>
         <connector>
             <targetReference>Create_Related_Problem_and_Incident</targetReference>
         </connector>
@@ -132,7 +132,7 @@
         <name>Create_Related_Problem_and_Incident</name>
         <label>Create Related Problem and Incident</label>
         <locationX>176</locationX>
-        <locationY>638</locationY>
+        <locationY>518</locationY>
         <connector>
             <targetReference>Update_Incident</targetReference>
         </connector>
@@ -161,7 +161,7 @@
         <name>Update_Incident</name>
         <label>Update Incident</label>
         <locationX>176</locationX>
-        <locationY>758</locationY>
+        <locationY>638</locationY>
         <filterLogic>and</filterLogic>
         <filters>
             <field>Id</field>
@@ -209,35 +209,21 @@
         <object>Incident</object>
     </recordUpdates>
     <screens>
-        <name>Information_Screen</name>
-        <label>Information Screen</label>
+        <name>Problem_Screen</name>
+        <label>Problem Screen</label>
         <locationX>176</locationX>
         <locationY>158</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
         <connector>
-            <targetReference>Problem_Screen</targetReference>
-        </connector>
-        <fields>
-            <name>Information_Text</name>
-            <fieldText>&lt;p&gt;You are the assigned &lt;b&gt;escalation manager &lt;/b&gt;for a newly submitted incident.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;ACTION ITEMS:&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;ol&gt;&lt;li&gt;Create a problem assessment.&lt;/li&gt;&lt;li&gt;Evaluate this incident&apos;s severity.&lt;/li&gt;&lt;/ol&gt;</fieldText>
-            <fieldType>DisplayText</fieldType>
-        </fields>
-        <showFooter>true</showFooter>
-        <showHeader>true</showHeader>
-    </screens>
-    <screens>
-        <name>Problem_Screen</name>
-        <label>Problem Screen</label>
-        <locationX>176</locationX>
-        <locationY>278</locationY>
-        <allowBack>true</allowBack>
-        <allowFinish>true</allowFinish>
-        <allowPause>false</allowPause>
-        <connector>
             <targetReference>Set_Problem_Values</targetReference>
         </connector>
+        <fields>
+            <name>instructions_text</name>
+            <fieldText>&lt;p&gt;Use this workflow to submit a problem assessment for this incident.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
         <fields>
             <name>Subject</name>
             <dataType>String</dataType>
@@ -354,7 +340,7 @@
         <locationX>50</locationX>
         <locationY>0</locationY>
         <connector>
-            <targetReference>Information_Screen</targetReference>
+            <targetReference>Problem_Screen</targetReference>
         </connector>
     </start>
     <status>Active</status>

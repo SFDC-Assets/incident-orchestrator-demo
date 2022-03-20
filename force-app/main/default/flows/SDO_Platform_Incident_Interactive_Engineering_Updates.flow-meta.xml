@@ -5,7 +5,7 @@
         <name>Set_Resolution</name>
         <label>Set Resolution</label>
         <locationX>182</locationX>
-        <locationY>974</locationY>
+        <locationY>854</locationY>
         <assignmentItems>
             <assignToReference>Get_Incident.ResolutionSummary</assignToReference>
             <operator>Assign</operator>
@@ -21,7 +21,7 @@
         <name>Set_Status_In_Progress</name>
         <label>Set Status to &quot;In Progress&quot;</label>
         <locationX>314</locationX>
-        <locationY>758</locationY>
+        <locationY>638</locationY>
         <assignmentItems>
             <assignToReference>Get_Incident.Status</assignToReference>
             <operator>Assign</operator>
@@ -37,7 +37,7 @@
         <name>Set_Status_Resolved</name>
         <label>Set Status to &quot;Resolved&quot;</label>
         <locationX>50</locationX>
-        <locationY>758</locationY>
+        <locationY>638</locationY>
         <assignmentItems>
             <assignToReference>Get_Incident.Status</assignToReference>
             <operator>Assign</operator>
@@ -74,7 +74,7 @@
         <name>Check_Resolution</name>
         <label>Check Resolution</label>
         <locationX>182</locationX>
-        <locationY>638</locationY>
+        <locationY>518</locationY>
         <defaultConnector>
             <targetReference>Set_Status_In_Progress</targetReference>
         </defaultConnector>
@@ -99,7 +99,7 @@
         <name>Check_Status1_0</name>
         <label>Check Status</label>
         <locationX>380</locationX>
-        <locationY>518</locationY>
+        <locationY>398</locationY>
         <defaultConnector>
             <targetReference>Error_Screen</targetReference>
         </defaultConnector>
@@ -124,7 +124,7 @@
         <name>Check_Status2</name>
         <label>Check Status</label>
         <locationX>182</locationX>
-        <locationY>1214</locationY>
+        <locationY>1094</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Is_In_Progress2</name>
@@ -174,7 +174,7 @@
         <name>Get_Incident</name>
         <label>Get Incident</label>
         <locationX>380</locationX>
-        <locationY>398</locationY>
+        <locationY>278</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Check_Status1_0</targetReference>
@@ -197,7 +197,7 @@
         <name>Update_Incident</name>
         <label>Update Incident</label>
         <locationX>182</locationX>
-        <locationY>1094</locationY>
+        <locationY>974</locationY>
         <connector>
             <targetReference>Check_Status2</targetReference>
         </connector>
@@ -207,7 +207,7 @@
         <name>Error_Screen</name>
         <label>Error Screen</label>
         <locationX>578</locationX>
-        <locationY>638</locationY>
+        <locationY>518</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -220,29 +220,10 @@
         <showHeader>true</showHeader>
     </screens>
     <screens>
-        <name>Information_Screen</name>
-        <label>Information Screen</label>
-        <locationX>380</locationX>
-        <locationY>158</locationY>
-        <allowBack>false</allowBack>
-        <allowFinish>true</allowFinish>
-        <allowPause>false</allowPause>
-        <connector>
-            <targetReference>Update_Incident_Screen</targetReference>
-        </connector>
-        <fields>
-            <name>Information_Text</name>
-            <fieldText>&lt;p&gt;You are the assigned &lt;b&gt;engineering lead&lt;/b&gt; for an &quot;In Progress&quot; incident.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;NEXT STEPS:&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;ol&gt;&lt;li&gt;Work with your teams to resolve the incidence.&lt;/li&gt;&lt;li&gt;Click &lt;b&gt;Next&lt;/b&gt;, once resolved, to communicate the resolution to other teams.&lt;/li&gt;&lt;/ol&gt;</fieldText>
-            <fieldType>DisplayText</fieldType>
-        </fields>
-        <showFooter>true</showFooter>
-        <showHeader>true</showHeader>
-    </screens>
-    <screens>
         <name>Update_Incident_Screen</name>
         <label>Update Incident Screen</label>
         <locationX>380</locationX>
-        <locationY>278</locationY>
+        <locationY>158</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -251,7 +232,7 @@
         </connector>
         <fields>
             <name>Instructions_Text</name>
-            <fieldText>&lt;p&gt;Provide a resolution summary of this incident, then indicate whether the incident is resolved.&lt;/p&gt;</fieldText>
+            <fieldText>&lt;p&gt;Provide a resolution summary and whether the incident has been resolved.&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
         </fields>
         <fields>
@@ -296,7 +277,7 @@
         <locationX>254</locationX>
         <locationY>0</locationY>
         <connector>
-            <targetReference>Information_Screen</targetReference>
+            <targetReference>Update_Incident_Screen</targetReference>
         </connector>
     </start>
     <status>Active</status>
