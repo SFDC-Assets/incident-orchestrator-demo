@@ -1,6 +1,9 @@
 # Create the scratch org (uncomment for local development)
 # sfdx force:org:delete -u orchestrator-incident-demo
-sfdx force:org:create -f config/project-scratch-def.json --setalias orchestrator-incident-demo --setdefaultusername
+# sfdx force:org:create -f config/project-scratch-def.json --setalias orchestrator-incident-demo --setdefaultusername
+
+# Create the scratch org (uncomment for the SFDX Deployer)
+sfdx shane:org:create -f config/project-scratch-def.json -d 30 -s -n --userprefix admin --userdomain orchestrator.demo
 
 # Push the metadata into the new scratch org.
 sfdx force:source:push
@@ -27,6 +30,9 @@ sfdx force:apex:execute -f ./scripts/ReassignAllAccountsAndContacts.apex
 
 # Generate a new Incident and related Cases
 sfdx force:apex:execute -f ./scripts/GenerateIncident.apex
+
+# Set the default password.
+sfdx shane:user:password:set -g User -l User -p salesforce1
 
 # Open the demo org.
 sfdx force:org:open
