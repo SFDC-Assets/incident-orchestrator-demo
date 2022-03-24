@@ -11,7 +11,10 @@
             <targetReference>Account_Loop</targetReference>
         </connector>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
-        <storeOutputAutomatically>true</storeOutputAutomatically>
+        <outputParameters>
+            <assignToReference>accounts</assignToReference>
+            <name>accounts</name>
+        </outputParameters>
     </actionCalls>
     <apiVersion>54.0</apiVersion>
     <assignments>
@@ -158,7 +161,7 @@
         <label>Loop through Accounts</label>
         <locationX>176</locationX>
         <locationY>398</locationY>
-        <collectionReference>Get_Accounts_with_Contacts.accounts</collectionReference>
+        <collectionReference>accounts</collectionReference>
         <iterationOrder>Asc</iterationOrder>
         <nextValueConnector>
             <targetReference>Check_Count2</targetReference>
