@@ -8,7 +8,7 @@ sfdx force:user:permset:assign -n SDO_Platform_Demos
 sfdx shane:user:permset:assign -n SDO_Platform_Demos -g Quentin -l Engineer
 sfdx shane:user:permset:assign -n SDO_Platform_Demos -g Tim -l Service
 sfdx shane:user:permset:assign -n SDO_Platform_Demos -g Sue -l Marketing
-sfdx shane:user:permset:assign -n SDO_Platform_Demos -g Cindy -l Sales
+sfdx shane:user:permset:assign -n SDO_Platform_Demos -g Cindy -l Central
 
 # Generate a new Incident and related Cases
 sfdx force:apex:execute -f ./scripts/GenerateIncident.apex
