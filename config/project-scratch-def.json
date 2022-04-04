@@ -2,13 +2,21 @@
   "orgName": "Orchestrator Incident Management Demo",
   "edition": "Enterprise",
   "adminEmail": "sfdx@mailinator.com",
+<<<<<<< HEAD
   "features": ["ServiceCloud","EnableSetPasswordInApi","ServiceUser"],
+=======
+  "features": ["ServiceCloud","EnableSetPasswordInApi","ServiceUser","Knowledge"],
+>>>>>>> 013e17266c9777b6d3481879668b98d2f2014a4e
   "settings": {
     "lightningExperienceSettings": {
       "enableS1DesktopEnabled": true
     },
     "securitySettings": {
       "enableAdminLoginAsAnyUser":true
+    },
+    "knowledgeSettings": {
+      "enableKnowledge": true,
+      "enableLightningKnowledge": true
     }    
   }
 }
