@@ -8,17 +8,66 @@
                     <value>Id</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
+                    <name>titleFieldName</name>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
                     <name>updateQuickActionName</name>
-                    <value>Incident._LightningUpdateIncident</value>
+                    <value>Incident.SDO_Platform_Incident_Overview</value>
                 </componentInstanceProperties>
                 <componentName>console:relatedRecord</componentName>
-                <identifier>console_relatedRecord</identifier>
+                <identifier>console_relatedRecord1</identifier>
             </componentInstance>
         </itemInstances>
         <itemInstances>
             <componentInstance>
-                <componentName>lbpm:actionList</componentName>
-                <identifier>lbpm_guidedactionlist</identifier>
+                <componentInstanceProperties>
+                    <name>parentFieldApiName</name>
+                    <value>Incident.Id</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>relatedListApiName</name>
+                    <value>ProblemIncidents</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>relatedListComponentOverride</name>
+                    <value>NONE</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>rowsToDisplay</name>
+                    <value>10</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>showActionBar</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentName>force:relatedListSingleContainer</componentName>
+                <identifier>force_relatedListSingleContainer1</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>parentFieldApiName</name>
+                    <value>Incident.Id</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>relatedListApiName</name>
+                    <value>CaseRelatedIssues</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>relatedListComponentOverride</name>
+                    <value>NONE</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>rowsToDisplay</name>
+                    <value>10</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>showActionBar</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentName>force:relatedListSingleContainer</componentName>
+                <identifier>force_relatedListSingleContainer2</identifier>
             </componentInstance>
         </itemInstances>
         <mode>Replace</mode>
@@ -101,7 +150,7 @@
                             <value>Delete</value>
                         </valueListItems>
                         <valueListItems>
-                            <value>ChangeOwnerOne</value>
+                            <value>New</value>
                         </valueListItems>
                     </valueList>
                 </componentInstanceProperties>
@@ -146,6 +195,48 @@
     <flexiPageRegions>
         <itemInstances>
             <componentInstance>
+                <componentInstanceProperties>
+                    <name>hideMarkCompleteButton</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentName>support:milestones</componentName>
+                <identifier>support_milestones</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentName>forceKnowledge:articleSearchDesktop</componentName>
+                <identifier>forceKnowledge_articleSearchDesktop</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>Facet-733c43ea-7e4d-4435-be33-2d50ba48fa03</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>active</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>body</name>
+                    <value>Facet-733c43ea-7e4d-4435-be33-2d50ba48fa03</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>title</name>
+                    <value>Incident Tools</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:tab</componentName>
+                <identifier>flexipage_tab1</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>Facet-bac5f199-12e3-419f-9df9-b2f723144dc5</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
                 <componentName>interaction_orchestrator:workGuide</componentName>
                 <identifier>interaction_orchestrator_workGuide1</identifier>
             </componentInstance>
@@ -153,11 +244,11 @@
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
-                    <name>hideMarkCompleteButton</name>
-                    <value>false</value>
+                    <name>tabs</name>
+                    <value>Facet-bac5f199-12e3-419f-9df9-b2f723144dc5</value>
                 </componentInstanceProperties>
-                <componentName>support:milestones</componentName>
-                <identifier>support_milestones</identifier>
+                <componentName>flexipage:tabset</componentName>
+                <identifier>flexipage_tabset1</identifier>
             </componentInstance>
         </itemInstances>
         <mode>Replace</mode>
