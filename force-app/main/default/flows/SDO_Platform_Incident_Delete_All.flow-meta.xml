@@ -164,6 +164,14 @@
         <connector>
             <targetReference>Incident_Loop</targetReference>
         </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Subject</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Service Outage</stringValue>
+            </value>
+        </filters>
         <getFirstRecordOnly>false</getFirstRecordOnly>
         <object>Incident</object>
         <storeOutputAutomatically>true</storeOutputAutomatically>
