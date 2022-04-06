@@ -11,7 +11,7 @@ global with sharing class SDO_Platform_Get_Random_Account_Contact {
     }
     
     global static String RetrieveRandomAccountContact(String accountId) {
-        List<Contact> contacts = [SELECT Id FROM Contact WHERE Account.Owner.LastName = 'Central'];
+        List<Contact> contacts = [SELECT Id FROM Contact WHERE Account.Owner.LastName = 'Central' OR Account.Owner.Alias = 'Cindy'];
         
         if (contacts.size() == 0) {
             return null;
