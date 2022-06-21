@@ -11,8 +11,16 @@ global with sharing class SDO_Platform_Get_Accounts_with_Contacts {
     }
     
     global static List<Account> retrieveAccountsWithContacts() {
-        List<Contact> contacts = [SELECT AccountId FROM Contact WHERE AccountId != NULL];
         List<String> accountIds = new List<String>();
+
+        // Used for SDO to ensure Cindy Central has Incident Cases
+        List<Contact> contacts = [SELECT AccountId FROM Contact WHERE Email = 'sjeffries@example.com' OR Email = 'rreid@example.com' OR Email = 'ehennessy@example.com'];
+        for (Contact contact: contacts) {
+            accountIds.add(contact.AccountId);
+        }
+
+        // Generates random Incident Cases for other Account Owners.
+        List<Contact> contacts = [SELECT AccountId FROM Contact WHERE AccountId != NULL];
         for (Contact contact: contacts) {
             accountIds.add(contact.AccountId);
         }
