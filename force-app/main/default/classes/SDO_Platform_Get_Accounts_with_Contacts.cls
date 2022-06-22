@@ -20,7 +20,7 @@ global with sharing class SDO_Platform_Get_Accounts_with_Contacts {
         }
 
         // Generates random Incident Cases for other Account Owners.
-        List<Contact> contacts = [SELECT AccountId FROM Contact WHERE AccountId != NULL];
+        contacts = [SELECT AccountId FROM Contact WHERE AccountId != NULL];
         for (Contact contact: contacts) {
             accountIds.add(contact.AccountId);
         }
