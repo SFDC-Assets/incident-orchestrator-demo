@@ -16,13 +16,13 @@ sfdx automig:load --inputdir ./data --deletebeforeload
 sfdx force:user:permset:assign -n SDO_Platform_Demos
 
 # Create the other users used by this demo
-sf org user create FirstName="Quentin" LastName="Engineer" Alias="Quentin" profileName="System Administrator" permsets="SDO_Platform_Demos"
+sfdx force:user:create FirstName="Quentin" LastName="Engineer" Alias="Quentin" profileName="System Administrator" permsets="SDO_Platform_Demos"
 sfdx shane:user:photo -f ./photos/quentin.png -g Quentin -l Engineer
-sf org user create FirstName="Tim" LastName="Service" Alias="Tim" profileName="System Administrator" permsets="SDO_Platform_Demos"
+sfdx force:user:create FirstName="Tim" LastName="Service" Alias="Tim" profileName="System Administrator" permsets="SDO_Platform_Demos"
 sfdx shane:user:photo -f ./photos/tim.png -g Tim -l Service
-sf org user create FirstName="Sue" LastName="Marketing" Alias="Sue" profileName="System Administrator" permsets="SDO_Platform_Demos"
+sfdx force:user:create FirstName="Sue" LastName="Marketing" Alias="Sue" profileName="System Administrator" permsets="SDO_Platform_Demos"
 sfdx shane:user:photo -f ./photos/sue.png -g Sue -l Marketing
-sf org user create FirstName="Cindy" LastName="Sales" Alias="Cindy" profileName="System Administrator" permsets="SDO_Platform_Demos"
+sfdx force:user:create FirstName="Cindy" LastName="Sales" Alias="Cindy" profileName="System Administrator" permsets="SDO_Platform_Demos"
 sfdx shane:user:photo -f ./photos/cindy.png -g Cindy -l Sales
 
 # Reassign ownership of ALL Accounts and Contacts to the 'Cindy' sales user.
