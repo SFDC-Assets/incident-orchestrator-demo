@@ -6,7 +6,7 @@
 sfdx shane:org:create -f config/project-scratch-def.json -d 30 -s -n --userprefix admin --userdomain orchestrator.demo
 
 # Push the metadata into the new scratch org.
-sf project deploy start
+sfdx force:source:push
 
 # Import the data required by the demo
 # (Exported using 'sfdx automig:dump --objects Account,Contact --outputdir ./data')
