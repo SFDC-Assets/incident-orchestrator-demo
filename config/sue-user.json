@@ -1,0 +1,8 @@
+{
+    "FirstName": "Sue",
+    "LastName": "Marketing",
+    "Alias": "Sue",
+    "profileName": "System Administrator",
+    "permsets": ["SDO_Platform_Demos"],
+    "generatePassword": true
+}
