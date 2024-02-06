@@ -14,16 +14,16 @@ sfdx force:user:permset:assign -n SDO_Platform_Demos
 # Create the other users used by this demo
 sf org create user -f config/quentin-user.json
 # sfdx force:user:create FirstName="Quentin" LastName="Engineer" Alias="Quentin" profileName="System Administrator" permsets="SDO_Platform_Demos"
-sfdx shane:user:photo -f ./photos/quentin.png -g Quentin -l Engineer
+# sfdx shane:user:photo -f ./photos/quentin.png -g Quentin -l Engineer
 sfdx force:user:create FirstName="Tim" LastName="Service" Alias="Tim" profileName="System Administrator" permsets="SDO_Platform_Demos"
 # sf org create user -f config/tim-user.json
-sfdx shane:user:photo -f ./photos/tim.png -g Tim -l Service
+# sfdx shane:user:photo -f ./photos/tim.png -g Tim -l Service
 sfdx force:user:create FirstName="Sue" LastName="Marketing" Alias="Sue" profileName="System Administrator" permsets="SDO_Platform_Demos"
 # sf org create user -f config/sue-user.json
-sfdx shane:user:photo -f ./photos/sue.png -g Sue -l Marketing
+# sfdx shane:user:photo -f ./photos/sue.png -g Sue -l Marketing
 sfdx force:user:create FirstName="Cindy" LastName="Sales" Alias="Cindy" profileName="System Administrator" permsets="SDO_Platform_Demos"
 # sf org create user -f config/cindy-user.json
-sfdx shane:user:photo -f ./photos/cindy.png -g Cindy -l Sales
+# sfdx shane:user:photo -f ./photos/cindy.png -g Cindy -l Sales
 
 # Reassign ownership of ALL Accounts and Contacts to the 'Cindy' sales user.
 sfdx force:apex:execute -f ./scripts/ReassignAllAccountsAndContacts.apex
