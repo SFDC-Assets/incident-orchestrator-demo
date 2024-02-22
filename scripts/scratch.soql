@@ -1,0 +1,3 @@
+SELECT AdminEmail, AlmReference, AuthCode, ConnectedAppCallbackUrl, ConnectedAppConsumerKey, Country, CreatedById, CreatedDate, DeletedBy, DeletedDate, Description, DurationDays, Edition, ErrorCode, ExpirationDate, Features, HasSampleData, Id, Instance, IsDeleted, Language, LastLoginDate, LastModifiedById, LastModifiedDate, LastReferencedDate, LastViewedDate, LoginUrl, Name, Namespace, OrgName, OwnerId, Package2AncestorIds, Release, ScratchOrg, SignupCountry, SignupEmail, SignupInstance, SignupLanguage, SignupTrialDays, SignupUsername, SourceOrg, Status, SystemModstamp, Template, Username
+  FROM ScratchOrgInfo
+  LIMIT 10000

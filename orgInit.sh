@@ -12,8 +12,8 @@ sfdx automig:load --inputdir ./data --deletebeforeload
 sfdx force:user:permset:assign -n SDO_Platform_Demos
 
 # Create the other users used by this demo
-sf org create user -f config/quentin-user.json
-# sfdx force:user:create FirstName="Quentin" LastName="Engineer" Alias="Quentin" profileName="System Administrator" permsets="SDO_Platform_Demos"
+# sf org create user -f config/quentin-user.json
+sfdx force:user:create FirstName="Quentin" LastName="Engineer" Alias="Quentin" profileName="System Administrator" permsets="SDO_Platform_Demos"
 # sfdx shane:user:photo -f ./photos/quentin.png -g Quentin -l Engineer
 sfdx force:user:create FirstName="Tim" LastName="Service" Alias="Tim" profileName="System Administrator" permsets="SDO_Platform_Demos"
 # sf org create user -f config/tim-user.json
